@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import store from './data/store/store';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from './views/App/app';
+import App from './views/Appa/todo';
+import './views/styles/common.scss';
+import './views/styles/reset.scss';
+import { Provider } from 'react-redux';
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+
+<App/>
+</Provider>
+
+
   </React.StrictMode>
 );
 
