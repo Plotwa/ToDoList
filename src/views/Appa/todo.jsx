@@ -1,11 +1,12 @@
 import React from 'react'
 import Inputplus from '../Components/Inputplus';
 import styles from './todo.module.scss'
-import {createTaskActionCreator} from '../../data/store/app-reducer';
+import {createTaskActionCreator, getTasks} from '../../data/store/app-reducer';
 import store from '../../data/store/store';
+import { useSelector } from 'react-redux';
 function App() {
-  let Tasks = store.getState().app.tasks
-
+  const tasks = useSelector(getTasks)
+  
   return (
     <div className='App'>
       <article className={styles.article}>
@@ -18,10 +19,11 @@ function App() {
           
          } }/>
           </section>
-        <section className={styles.articleSection}>Tasks:{Tasks.map(task=><div>{task.title}</div>)}</section>
+        <section className={styles.articleSection}>tasks:{tasks.map(task=><div>{task.title}</div>)}</section>
         </article>
     </div>
   );
 }
 
 export default App;
+

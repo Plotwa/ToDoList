@@ -17,6 +17,7 @@ const appReducer = (state=initialState,action) =>{
                 id: state.id++,
                 title: action.newTitle
             }
+            console.log('new Task',newTask)
             return {
                 ...state,tasks:[...state.tasks, newTask],
             
@@ -26,6 +27,7 @@ const appReducer = (state=initialState,action) =>{
             return state
         }
         case DELETE_TASK:{
+            
             return state
         }
         default:return state
@@ -34,4 +36,13 @@ const appReducer = (state=initialState,action) =>{
 export const createTaskActionCreator= (newTitle) => ({
     type: CREATE_TASK, newTitle
  })
+ export const deleteTaskActioncreator = (id) =>({
+    type: DELETE_TASK
+ })
+ export const  updateTaskActioncreator =(newTitle,id) =>({
+    type: UPDATE_TASK
+ })
+ export const getTasks = (state) => {
+    return state.app.tasks
+ }
 export default appReducer
