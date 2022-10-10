@@ -6,8 +6,7 @@ const DELETE_TASK = 'DELETE_TASK'
 let initialState ={
     title: '',
     id: 0,
-    tasks:[{id:0,
-            title:'Век одиночетсва'}]
+    tasks:[]
 }
 
 const appReducer = (state=initialState,action) =>{
@@ -27,8 +26,8 @@ const appReducer = (state=initialState,action) =>{
             return state
         }
         case DELETE_TASK:{
-            
-            return state
+            return {...state,
+            tasks:state.tasks.filter((task) => task.id !== action.id),}    
         }
         default:return state
     }
@@ -37,7 +36,7 @@ export const createTaskActionCreator= (newTitle) => ({
     type: CREATE_TASK, newTitle
  })
  export const deleteTaskActioncreator = (id) =>({
-    type: DELETE_TASK
+    type: DELETE_TASK,id
  })
  export const  updateTaskActioncreator =(newTitle,id) =>({
     type: UPDATE_TASK

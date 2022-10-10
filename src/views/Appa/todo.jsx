@@ -4,6 +4,7 @@ import styles from './todo.module.scss'
 import {createTaskActionCreator, getTasks} from '../../data/store/app-reducer';
 import store from '../../data/store/store';
 import { useSelector } from 'react-redux';
+import Task from '../Components/task/task';
 function App() {
   const tasks = useSelector(getTasks)
   
@@ -19,7 +20,7 @@ function App() {
           
          } }/>
           </section>
-        <section className={styles.articleSection}>tasks:{tasks.map(task=><div>{task.title}</div>)}</section>
+        <section className={styles.articleSection}>tasks:{tasks.map(task => <Task task = {task}/>)}</section>
         </article>
     </div>
   );
